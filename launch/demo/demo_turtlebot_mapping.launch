@@ -27,7 +27,7 @@
   -->
   
   <arg name="database_path"     default="rtabmap.db"/>
-  <arg name="rgbd_odometry"     default="true"/>
+  <arg name="rgbd_odometry"     default="false"/>
   <arg name="rtabmapviz"        default="false"/>
   <arg name="localization"      default="false"/>
   <arg name="simulation"        default="false"/>
@@ -74,6 +74,8 @@
 	  <remap from="rgb/image"       to="$(arg rgb_topic)"/>
   	  <remap from="depth/image"     to="$(arg depth_topic)"/>
   	  <remap from="rgb/camera_info" to="$(arg camera_info_topic)"/>
+       
+       <!-- <remap from="odom" to="/base_controller"/> -->
 
           <!-- Fix odom covariance as in simulation the covariance in /odom topic is high (0.1 for linear and 0.05 for angular) -->
           <param unless="$(arg rgbd_odometry)" name="odom_frame_id" value="odom"/>
